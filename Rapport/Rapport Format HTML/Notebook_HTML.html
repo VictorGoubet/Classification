@@ -13102,7 +13102,7 @@ TD D</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13130,7 +13130,7 @@ TD D</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -13152,7 +13152,7 @@ Y celles correspondant aux etiquettes</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
@@ -13176,7 +13176,7 @@ Y celles correspondant aux etiquettes</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">std_scale</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -13199,7 +13199,7 @@ La separation est plus efficace car il procéde à un mélange aléatoire avant 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X_normalize</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">4871</span><span class="p">)</span>
@@ -13757,7 +13757,7 @@ Calcul du fold n°( 5 / 5 )..
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>On peut voir ici que l'on obtient des scores haut pour k=7-8-9. Cependant un k pair peu mener à des votes égalitaires. On choisit donc k=9.</p>
+<p>On peut voir ici que l'on obtient des scores haut pour k=7-8-9. Cependant un k pair peu mener à des votes égalitaires. On choisit donc k=9 qui est légérement plus haut que k=7.</p>
 <h3 id="Test-final">Test final<a class="anchor-link" href="#Test-final">&#182;</a></h3>
 </div>
 </div>
@@ -13854,7 +13854,7 @@ Une deuxième amélioration non nègligeable serait d'optimiser un deuxième hyp
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data2</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;preTest.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1">#On charge</span>
@@ -13943,7 +13943,7 @@ On a ici "fité" nos données sur l'entièreté du premier dataset afin d'avoir 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X3_normalize</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X_normalize</span><span class="p">,</span><span class="n">X2_normalize</span><span class="p">])</span>
@@ -14378,7 +14378,7 @@ On va commencer par importer les donnèes:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span>  <span class="kn">import</span> <span class="n">validation_curve</span>
@@ -14400,7 +14400,7 @@ On va commencer par importer les donnèes:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#On définit le model</span>
@@ -14420,7 +14420,7 @@ On va commencer par importer les donnèes:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span><span class="n">ScoreValidation_Mean</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Validation set&#39;</span><span class="p">)</span>
@@ -14482,7 +14482,7 @@ On va commencer par importer les donnèes:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
@@ -14495,18 +14495,18 @@ On va commencer par importer les donnèes:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#On teste ici seulement pour 3 distances car mahalanobis ou seuclidean font planter le noyau..</span>
-
-<span class="c1">#V=np.cov(X_train3.T)</span>
-<span class="c1">#VI=np.linalg.inv(V)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#On teste ici pour 5 distances</span>
+<span class="n">V1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X_train3</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">V2</span><span class="o">=</span><span class="n">V1</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()</span>
 
 <span class="n">paramétres</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span><span class="n">interval</span> <span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="s1">&#39;minkowski&#39;</span><span class="p">,</span><span class="s1">&#39;chebyshev&#39;</span><span class="p">]},</span>
     
-    <span class="c1">#{&#39;n_neighbors&#39;: interval, &#39;metric&#39;: [&#39;mahalanobis&#39;, &#39;seuclidean&#39;],&#39;metric_params&#39;: [{&#39;V&#39;:V },{&#39;VI&#39;:VI }]}</span>
+    <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="n">interval</span><span class="p">,</span><span class="s1">&#39;algorithm&#39;</span><span class="p">:[</span><span class="s1">&#39;brute&#39;</span><span class="p">],</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mahalanobis&#39;</span><span class="p">],</span><span class="s1">&#39;metric_params&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;V&#39;</span><span class="p">:</span><span class="n">V1</span> <span class="p">}]},</span>
+    <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="n">interval</span><span class="p">,</span><span class="s1">&#39;algorithm&#39;</span><span class="p">:[</span><span class="s1">&#39;brute&#39;</span><span class="p">],</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;seuclidean&#39;</span><span class="p">],</span><span class="s1">&#39;metric_params&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;V&#39;</span><span class="p">:</span><span class="n">V2</span> <span class="p">}]}</span>
 <span class="p">]</span>
 
 <span class="c1">#Le model etant ici plus performant on peu se permettre de spliter en 10 plutot qu&#39;en 5</span>
@@ -14541,15 +14541,15 @@ On va commencer par importer les donnèes:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>On s'aperçoit qu'ici la distance euclidienne est la meilleure (parmis les 3 testées) et que k=7 est la meilleure option.<br>
-On trouve donc le même k trouvé plus haut.</p>
+<p>On s'aperçoit qu'ici la distance euclidienne est la plus efficace et que k=7 reste donc la meilleure option. On trouve donc le même k trouvé plus haut.<br>
+On remarque d'ailleurs que l'on a bien fait de ne pas choisir une distance avec des poids comme mahalanobis qui pourtant parait plus performante de part sa discrimination des points éloignés et non similaires mais qui pourtant apporte un moins bon score.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span>
@@ -14566,7 +14566,7 @@ On trouve donc le même k trouvé plus haut.</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[39]:</div>
+    <div class="prompt output_prompt">Out[16]:</div>
 
 
 

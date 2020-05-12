@@ -17,7 +17,7 @@
 # ### Prepatation des données
 # On commence par importer les librairies necessaires :
 
-# In[1]:
+# In[2]:
 
 
 import pandas as pd
@@ -32,7 +32,7 @@ import matplotlib.pyplot as plt
 
 # On importe les données :
 
-# In[2]:
+# In[3]:
 
 
 data= pd.read_csv('data.csv',sep=';',header=None)
@@ -41,7 +41,7 @@ data= pd.read_csv('data.csv',sep=';',header=None)
 # Ici on stock dans le vecteur X les colonnes correspondant aux classe et dans 
 # Y celles correspondant aux etiquettes
 
-# In[3]:
+# In[4]:
 
 
 X=data[data.columns[:-1]].values
@@ -52,7 +52,7 @@ labels_Class=np.unique(Y)
 
 # On va maintenant normaliser nos donnèes. Cela permettra de réduire l'impact des donnèes erronées. Cela revient donc à diviser nos données par l'ecart type et soustraire la moyenne. Dans un soucis de rapidité on utilise ici le scaler fournis par sklearn.
 
-# In[4]:
+# In[5]:
 
 
 std_scale = preprocessing.StandardScaler().fit(X)
@@ -62,7 +62,7 @@ X_normalize = std_scale.transform(X)
 # On utilise le module Sklearn pour séparer nos données en un jeux d'entrainement et un autre de test. <br>
 # La separation est plus efficace car il procéde à un mélange aléatoire avant de séparer les données. On prend ici 20% des données en données de test.
 
-# In[5]:
+# In[6]:
 
 
 X_train, X_test, Y_train, Y_test = model_selection.train_test_split(X_normalize, Y,test_size=0.2,random_state=4871)
@@ -225,7 +225,7 @@ plt.xlabel("K")
 plt.grid()
 
 
-# On peut voir ici que l'on obtient des scores haut pour k=7-8-9. Cependant un k pair peu mener à des votes égalitaires. On choisit donc k=9.
+# On peut voir ici que l'on obtient des scores haut pour k=7-8-9. Cependant un k pair peu mener à des votes égalitaires. On choisit donc k=9 qui est légérement plus haut que k=7.
 # ### Test final
 
 # In[13]:
@@ -250,7 +250,7 @@ model.Precision(X_test,Y_test,True)
 
 # *on prépare nos donnèes*
 
-# In[14]:
+# In[7]:
 
 
 data2= pd.read_csv('preTest.csv',sep=';',header=None) #On charge
@@ -279,7 +279,7 @@ model2.Precision(X2_normalize,Y2,True)
 # ### Fusion des dataSets
 # Fusionnons maintenant les datasets afin d'augmenter encore notre precision d'optimisation
 
-# In[16]:
+# In[8]:
 
 
 X3_normalize=np.concatenate([X_normalize,X2_normalize])
@@ -365,7 +365,7 @@ Save(labels)
 # 
 # ### Optimisation de k
 
-# In[34]:
+# In[9]:
 
 
 from sklearn.model_selection  import validation_curve
@@ -374,7 +374,7 @@ from sklearn.neighbors import KNeighborsClassifier
 
 # On utilise ici le model KNN et la cross validation fournis par Sklearn.
 
-# In[35]:
+# In[12]:
 
 
 #On définit le model
@@ -387,7 +387,7 @@ ScoreValidation_Mean=ScoreValidation.mean(axis=1)
 ScoreTrain_Mean=ScoreTrain.mean(axis=1)
 
 
-# In[36]:
+# In[13]:
 
 
 plt.plot(interval,ScoreValidation_Mean,label='Validation set')
@@ -409,24 +409,24 @@ plt.show()
 # ### GridSearch
 # On va ici utiliser la méthode grid search qui procède toujours par cross validation mais qui va également optimiser tout les autres hypers parmètres (ici k et distances).
 
-# In[37]:
+# In[14]:
 
 
 from sklearn.model_selection import GridSearchCV
 
 
-# In[38]:
+# In[15]:
 
 
-#On teste ici seulement pour 3 distances car mahalanobis ou seuclidean font planter le noyau..
-
-#V=np.cov(X_train3.T)
-#VI=np.linalg.inv(V)
+#On teste ici pour 5 distances
+V1=np.cov(X_train3.T)
+V2=V1.diagonal()
 
 paramétres = [
     {'n_neighbors':interval , 'metric': ['euclidean', 'minkowski','chebyshev']},
     
-    #{'n_neighbors': interval, 'metric': ['mahalanobis', 'seuclidean'],'metric_params': [{'V':V },{'VI':VI }]}
+    {'n_neighbors': interval,'algorithm':['brute'], 'metric': ['mahalanobis'],'metric_params': [{'V':V1 }]},
+    {'n_neighbors': interval,'algorithm':['brute'], 'metric': ['seuclidean'],'metric_params': [{'V':V2 }]}
 ]
 
 #Le model etant ici plus performant on peu se permettre de spliter en 10 plutot qu'en 5
@@ -435,10 +435,10 @@ grid.fit(X_train3,Y_train3)
 print(grid.best_params_)
 
 
-# On s'aperçoit qu'ici la distance euclidienne est la meilleure (parmis les 3 testées) et que k=7 est la meilleure option.<br>
-# On trouve donc le même k trouvé plus haut.
+# On s'aperçoit qu'ici la distance euclidienne est la plus efficace et que k=7 reste donc la meilleure option. On trouve donc le même k trouvé plus haut.<br>
+# On remarque d'ailleurs que l'on a bien fait de ne pas choisir une distance avec des poids comme mahalanobis qui pourtant parait plus performante de part sa discrimination des points éloignés et non similaires mais qui pourtant apporte un moins bon score.
 
-# In[39]:
+# In[16]:
 
 
 model=grid.best_estimator_
